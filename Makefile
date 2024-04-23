@@ -6,42 +6,58 @@
 #    By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 17:04:44 by jwolfram          #+#    #+#              #
-#    Updated: 2024/04/18 19:08:04 by jwolfram         ###   ########.fr        #
+#    Updated: 2024/04/23 18:27:26 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libftprintf.a
 
-CC := cc 
+# Compilation
+
+CC := cc
 
 CFLAGS := -Wall -Wextra -Werror
 
-SRCS := src/ft_printf.c
-
-OBJS := ${SRCS:.c=.o}
+INCLUDE := -I./includes/
 
 AR := ar -rcs
 
-LIBFT := ${MAKE} -C libft
+RM := rm -rf
+
+# Sources
+
+SRC_DIR := src/
+
+SRCS := ft_printf.c
+
+OBJS := ${SRCS:.c=.o}
 
 HEADER := ft_printf.h
 
-RM := rm -rf
+LIBFT_DIR := ./libft/
 
-all: ${LIBFT} ${NAME}
+LIBFT := libft.a
 
-${NAME} : ${OBJS} ${HEADER}
+LIBFT_AR := ./libft/libft.a
+
+all: ${NAME}
+
+${NAME} : ${OBJS} ${LIBFT_AR}
+	cp ${LIBFT_AR} ${NAME}
 	${AR} ${NAME} ${OBJS}
 
+${LIBFT_AR}:
+	${MAKE} -C ${LIBFT_DIR}
+
 %.o: %.c
-	${CC} ${CFLAGS} $< -I. -o $@
+	${CC} ${CFLAGS} $< ${INCLUDE} -c -o $@
 
 clean:
-	${LIBFT} $@
+	${MAKE} $@ -C ${LIBFT_DIR}
 	${RM} ${OBJS}
 
 fclean: clean
-	${LIBFT} $@
+	${MAKE} $@ -C ${LIBFT_DIR}
 	${RM} ${NAME}
 
 re: fclean all
