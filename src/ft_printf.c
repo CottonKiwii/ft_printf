@@ -6,18 +6,33 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:21:25 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/04/23 12:27:07 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/04/24 18:38:55 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
+#include "unistd.h"
 
-void	print_char(char c)
+int	print_char(char c)
 {
 	write(1, &c, 1);
 }
 
-void	ft_eval(va_list arg, const char *format)
+void	print_str(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return ;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+
+int	ft_eval(va_list arg, const char *format)
 {
 	if (format == 'c')
 		return (print_char(va_arg(arg, char)));
