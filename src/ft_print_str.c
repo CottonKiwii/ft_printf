@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:30:19 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/04/26 16:00:57 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/04/26 17:14:24 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	ft_print_str(char *str)
 {
 	size_t	i;
-	int	bytes;
-	int len;
+	int		bytes;
+	int		len;
 
 	i = 0;
 	bytes = 0;

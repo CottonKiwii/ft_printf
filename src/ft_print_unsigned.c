@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:35:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/04/26 15:35:40 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/04/26 17:13:40 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int	ft_print_unsigned(unsigned int nbr)
 {
 	int	bytes;
-	int temp;
-	
+	int	temp;
+
 	bytes = 0;
 	if (nbr < 10)
 	{
 		bytes = ft_print_char((nbr + '0'));
-			return (bytes);
+		return (bytes);
 	}
 	temp = ft_print_unsigned((nbr / 10));
 	if (temp == -1)

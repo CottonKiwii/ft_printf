@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:31:23 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/04/26 15:31:50 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/04/26 16:39:05 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	ft_print_hex(unsigned long hex, int format)
 	int		temp;
 
 	base = "0123456789abcdef";
-	if (!hex)
-		return (write(STDOUT_FILENO, "(nil)", 5));
 	if (format == 'X')
 		base = "0123456789ABCDEF";
 	if (hex < 16)
