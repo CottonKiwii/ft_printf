@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:21:25 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/04/26 15:38:51 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/04/26 17:14:39 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,47 @@ static int	ft_eval(va_list arg, int format)
 	return (-1);
 }
 
+static int	ft_print_format(va_list arg, const char *format)
+{
+	int	bytes;
+	int	temp;
+	int	i;
+
+	i = 0;
+	bytes = 0;
+	while (format[i] && format)
+	{
+		if (format[i] == '%' && format[i + 1])
+		{
+			temp = ft_eval(arg, format[i + 1]);
+			i++;
+		}
+		else
+			temp = write(STDOUT_FILENO, &format[i], 1);
+		if (temp == -1)
+			return (temp);
+		bytes += temp;
+		i++;
+	}
+	return (bytes);
+}
+
 int	ft_printf(const char *format, ...)
 {
-	va_list arg;
-	size_t	bytes;
+	va_list	arg;
 	size_t	i;
+	size_t	bytes;
+	int		temp;
 
 	i = 0;
 	bytes = 0;
 	if (!format)
 		return (-1);
 	va_start(arg, format);
-	while (format && format[i])
-	{
-		if (format[i] == '%' && format[i + 1])
-		{
-			bytes += ft_eval(arg, format[i + 1]);
-			if (bytes == -1)
-				return (bytes);
-			i++;
-		}
-		else
-			bytes += write(STDOUT_FILENO, &format[i], 1);
-		i++;
-	}
+	temp = ft_print_format(arg, format);
+	if (temp == -1)
+		return (temp);
+	bytes = temp;
 	va_end(arg);
 	return (bytes);
 }
