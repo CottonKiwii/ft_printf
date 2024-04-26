@@ -6,13 +6,13 @@
 #    By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 17:04:44 by jwolfram          #+#    #+#              #
-#    Updated: 2024/04/23 18:27:26 by jwolfram         ###   ########.fr        #
+#    Updated: 2024/04/26 15:42:15 by jwolfram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libftprintf.a
 
-# Compilation
+### Compilation ###
 
 CC := cc
 
@@ -24,13 +24,23 @@ AR := ar -rcs
 
 RM := rm -rf
 
-# Sources
+### Sources ###
 
 SRC_DIR := src/
 
-SRCS := ft_printf.c
+SRCS_FILES := ft_printf.c \
+			  ft_print_char.c \
+			  ft_print_str.c \
+			  ft_print_nbr.c \
+			  ft_print_ptr.c \
+			  ft_print_unsigned.c \
+			  ft_print_hex.c
+
+SRCS = ${addprefix ${SRC_DIR}, ${SRCS_FILES}}
 
 OBJS := ${SRCS:.c=.o}
+
+### Library/Header ###
 
 HEADER := ft_printf.h
 
@@ -39,6 +49,8 @@ LIBFT_DIR := ./libft/
 LIBFT := libft.a
 
 LIBFT_AR := ./libft/libft.a
+
+### Commands ###
 
 all: ${NAME}
 
