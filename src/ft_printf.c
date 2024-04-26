@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:21:25 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/04/25 18:08:49 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/04/26 13:03:30 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,39 @@ int	print_ptr(void *ptr)
 	temp = print_str("0x");
 	if (temp == -1)
 		return (temp);
+	bytes = temp;
+	temp = print_hex(ptr, 'x');
+	if (temp == -1)
+		return (temp);
+	bytes += temp;
+	return (bytes);
+}
+
+int	print_hex(unsigned long hex, int format)
+{
+	char	*base;
+	int		temp;
+	int		bytes;
+
+	base = "0123456789abcdef";
+	if (!hex)
+		return (write(STDOUT_FILENO, "(nil)", 5));
+	if (format == 'X')
+		base = "0123456789ABCDEF";
+	if (hex < 16)
+	{
+		temp = print_char(base[hex]);
+		return (temp);
+	}
+	temp = print_hex(hex / 16, format);
+	if (temp == -1)
+		return (temp);
+	bytes = temp;
+	temp = print_hex(hex % 16, format);
+	if (temp == -1)
+		return (temp);
+	bytes += temp;
+	return (bytes);
 }
 
 // ACTUAL FT_PRINTF.C FILE
@@ -64,9 +97,9 @@ static int	ft_eval(va_list arg, int format)
 		return (print_nbr(va_arg(arg, int)));
 	else if (format == 'u')
 		return (print_unsigned(va_arg(arg, unsigned int)));
-	else if (format == 'X' || format == 'x')
-		return (print_hex(va_arg(arg, unsigned int)));
-*/
+*/	else if (format == 'X' || format == 'x')
+		return (print_hex(va_arg(arg, unsigned long), format));
+
 	else if (format == '%')
 		return (print_char('%'));
 	return (-1);
