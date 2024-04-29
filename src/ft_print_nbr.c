@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:34:13 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/04/26 17:12:48 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/04/29 13:54:24 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	ft_print_nbr(int nbr)
 	int	temp;
 
 	mod = 1;
-	temp = 0;
 	bytes = 0;
 	if (nbr < 0)
 	{
@@ -51,7 +50,7 @@ int	ft_print_nbr(int nbr)
 		bytes = temp;
 		mod = -1;
 	}
-	temp += ft_set_nbr(nbr, mod);
+	temp = ft_set_nbr(nbr, mod);
 	if (temp == -1)
 		return (temp);
 	bytes += temp;
