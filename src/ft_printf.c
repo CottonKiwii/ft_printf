@@ -6,12 +6,11 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:21:25 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/04/26 17:14:39 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:02:50 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "unistd.h"
 
 static int	ft_eval(va_list arg, int format)
 {
@@ -42,7 +41,7 @@ static int	ft_print_format(va_list arg, const char *format)
 	bytes = 0;
 	while (format[i] && format)
 	{
-		if (format[i] == '%' && format[i + 1])
+		if (format[i] == '%')
 		{
 			temp = ft_eval(arg, format[i + 1]);
 			i++;
