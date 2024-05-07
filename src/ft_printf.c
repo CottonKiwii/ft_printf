@@ -6,7 +6,7 @@
 /*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:21:25 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/05/06 15:02:50 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:50:30 by jwolfram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_eval(va_list arg, int format)
 	else if (format == 'u')
 		return (ft_print_unsigned(va_arg(arg, unsigned int)));
 	else if (format == 'X' || format == 'x')
-		return (ft_print_hex(va_arg(arg, unsigned long), format));
+		return (ft_print_hex(va_arg(arg, unsigned int), format));
 	else if (format == '%')
 		return (ft_print_char('%'));
 	return (-1);
