@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:30:19 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/04/26 17:14:24 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:29:17 by CottonKiwii      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	ft_print_str(char *str)
 {
-	size_t	i;
 	int		bytes;
 	int		len;
 
-	i = 0;
 	bytes = 0;
 	if (!str)
 	{

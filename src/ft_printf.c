@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwolfram <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: CottonKiwii <julia.wolfram@gmx.at>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:21:25 by jwolfram          #+#    #+#             */
-/*   Updated: 2024/05/08 13:01:45 by jwolfram         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:28:47 by CottonKiwii      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,9 @@ static int	ft_print_format(va_list arg, const char *format)
 int	ft_printf(const char *format, ...)
 {
 	va_list	arg;
-	size_t	i;
 	size_t	bytes;
 	int		temp;
 
-	i = 0;
 	bytes = 0;
 	if (!format)
 		return (-1);
